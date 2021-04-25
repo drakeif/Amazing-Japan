@@ -1,0 +1,752 @@
+//Обнулення стилів
+@import 'reset';
+//Шрифти
+@import 'fonts';
+//колір
+@import 'color';
+//адаптив
+@import 'media';
+//вирівнюємо контент по центру та обмежуємо ширину
+body {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.2;
+    color: $main;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.container {
+    max-width: 1090px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.container-full {
+    max-width: 1292px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.section--title {
+    position: relative; 
+    font-size: 35px;
+    line-height: 42px;
+    &::after {
+        display: block;
+        content: '';
+
+        background-color: $btn;
+        width: 253px;
+        height: 3px;
+
+        position: absolute;
+        bottom: -10px;
+        left: 0;   
+        @include breakpoint (md) {
+           width: 78px;
+        }
+    }
+    @include breakpoint (lg) {
+        margin-bottom: 25px;
+    }
+}
+//основні стилі
+//header
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: .1s linear;
+    padding: 56px 0 20px 0;
+    z-index: 999;
+    @include breakpoint (lg) {
+        padding: 25px 0 0 0;
+    }
+    &__inner {
+        display: flex;
+        flex-flow: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        &-links {
+            color: $wh;
+            font-size: 18px;
+            line-height: 24px;
+            @include breakpoint(lg) {
+                /* display: none; */
+                padding: 75px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 10;
+                background-color: #000;
+                width: 100%;
+                height: 100%;
+               /*  transition: .3s linear; */
+                transform: translateX(100%);
+                
+            }
+            @include breakpoint(md) {
+                padding: 30px;
+            }
+            &__link {
+                color: inherit;
+                text-decoration: none;
+                margin-right: 82px;
+                &:hover, &:focus, &:active {
+                    opacity: .7;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+                @include breakpoint(lg) {
+                    display: block;
+                    width: 100%;
+                    font-size: 42px;
+                    line-height: 48px;
+                    margin-bottom: 30px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            &_close {
+                display: none;
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 75px;
+                right: 20px;
+                z-index: 11;
+                @include breakpoint(md) {
+                    top: 30px;
+
+                }
+                span {
+                    display: block;
+                    width: 100%;
+                    height: 2px;
+                    background-color: $wh;
+                    position: absolute;
+                    top: 50%;
+                    
+                    &:first-child {
+                        transform: translateY(-50%) rotate(45deg);
+                    }
+                    &:last-child {
+                        transform: translateY(-50%) rotate(-45deg);
+                    }
+                }
+                @include breakpoint (lg) {
+                    display: block;
+                }
+            }
+        }
+    }
+    &--active {
+        background-color: $bgH-F;
+        padding: 10px 0 10px 0;
+    }
+    &__burger {
+        display: none;
+        width: 40px;
+        height: 28px;
+        position: relative;
+        @include breakpoint(lg) {
+            display: block;
+        }
+        &-line {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: $wh;
+            position: absolute;
+            left: 0;
+        }
+        &-first {
+            top: 0;
+        }
+        &-second {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &-third {
+            bottom: 0;
+        }
+    }
+    &--active2 {
+        @include breakpoint(lg) {
+            display: block;
+            transform: translateX(0);
+            transition: .3s linear;
+        }
+    }
+}
+//intro
+.intro {
+    padding: 260px 0 223px 0;
+    min-height: 100vh;
+    background: $bgc url("../img/intro.jpg") no-repeat center;
+    background-size: cover;
+    @include breakpoint (lg) {
+        padding: 125px 0 0 0;
+    }
+    &__content {
+        h1 {
+            max-width: 619px;
+            width: 100%;
+            color: $wh;
+            font-weight: 500;
+            font-size: 50px;
+            line-height: 60px;
+            margin-bottom: 22px;
+            @include breakpoint (lg) {
+                font-size: 32px;
+                line-height: 48px;
+            }
+        }
+        p {
+            max-width: 546px;
+            width: 100%;
+            color: $wh;
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 59px;
+            @include breakpoint (lg) {
+                font-size: 14px;
+            }
+        }
+    }
+}
+//intro - form
+.form {
+    &__wrap {
+        &-info {
+            display: flex;
+            flex-wrap: wrap;
+            &_input {
+                width: 297px;
+                color: $wh;
+                font-size: 18px;
+                line-height: 24px;
+                background: transparent url("../img/svg/oval.svg") no-repeat left 7px;
+                background-size: 20px;
+                border: 0;
+                border-bottom: 2px solid $bb;
+                margin-right: 60px;
+                padding: 0 0 22px 43px;
+                &::placeholder {
+                    color: $wh;
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                @include breakpoint (xl) {
+                    margin-bottom: 25px;
+                }
+                @include breakpoint (lg) {
+                    width: 100%;
+                    margin-right: 0;
+                    &::placeholder {
+                        font-size: 16px;
+                    }
+                }
+                @include breakpoint (md) {
+                    padding-bottom: 12px;
+                    background: transparent url("../img/svg/oval.svg") no-repeat left 2px;
+                }
+            }
+            &_btn {
+                padding: 15px 39px;
+                border: 0;
+                outline: 0;
+                background-color: $btn;
+                color: $wh;
+                text-transform: uppercase;
+                font-size: 24px;
+                line-height: 28.8px;
+                transition: .2s linear;
+                &:focus, &:hover, &:active {
+                    background-color: $btna;
+                }
+                @include breakpoint (xl) {
+                    margin-bottom: 25px;
+                }
+                @include breakpoint (md) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+//benefits
+.benefits {
+    margin-bottom: 131px;
+    @include breakpoint (xl) {
+        margin-bottom: 75px;
+    }
+    @include breakpoint (md) {
+        margin-bottom: 36pxpx;
+    }
+    &__wrap {
+        position: relative;
+        max-width: 1262px;
+        width: 100%;
+        margin: 0 auto;
+        background: $wh;
+        box-shadow: 0px 2px 20px rgba(21, 24, 36, 0.15993);
+        @include breakpoint (xl) {
+            box-shadow: none;
+        }
+    }
+    &__title {
+        width: 100%;
+        background: $wh;
+        font-size: 35px;
+        line-height: 42px;
+        padding: 93px 100px 88px 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      
+        transform: translateY(-100%);
+        @include breakpoint (xl) {
+            padding: 55px 15px;
+        }
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 55px;
+        @include breakpoint (xl) {
+            padding: 0 15px;
+            column-gap: 35px;
+        }
+        &-card {
+            grid-column: span 1;
+            margin-bottom: 121px;
+            @include breakpoint (xl) {
+                margin-bottom: 60px;
+            }
+            @include breakpoint (lg) {
+                grid-column: span 3;
+            }
+            @include breakpoint (md) {
+                margin-bottom: 40px;
+            }
+            h3 {
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 26px;
+                @include breakpoint (md) {
+                    margin-bottom: 12px;
+                }
+            }
+            p {
+                max-width: 317px;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 39px;
+                @include breakpoint (md) {
+                    margin-bottom: 20px;
+                }
+            }
+            a {
+                display: inline-block;
+                padding-right: 59px;
+                background: url("../img/svg/arrow.svg") no-repeat 96% center;
+                color: $btn;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 16px;
+                line-height: 24px;
+                transition: .2s linear;
+                &:hover, &:focus {
+                    background: url("../img/svg/arrow.svg") no-repeat right center;
+                }
+            }
+            &_img {
+                max-width: 50px;
+                margin-bottom: 37px;
+                @include breakpoint (md) {
+                    margin-bottom: 20px;
+                }
+                img {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+//places
+.places {
+    margin-bottom: 131px;
+    @include breakpoint (md) {
+        margin-bottom: 76px;
+    }
+    &__inner{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 36px;
+        &-title {
+            margin-right: 15px;
+        }
+        &-view {
+            display: inline-block;
+            padding-right: 59px;
+            background: url("../img/svg/arrow.svg") no-repeat 96% center;
+            color: $btn;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            line-height: 24px;
+            transition: .2s linear;
+            &:hover, &:focus {
+                background: url("../img/svg/arrow.svg") no-repeat right center;
+            }
+        }
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, auto);
+        column-gap: 10px;
+        row-gap: 10px;
+        &-card {
+            position: relative;
+            overflow: hidden;
+            &:hover::after {
+                opacity: 0;
+            }
+            &:hover img {
+                transform: scale(1.05);
+            }
+            &::after {
+                display: block;
+                content: '';
+
+                width: 100%;
+                height: 100%;
+                background: $card;
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+
+                opacity: 1;
+                transition: .2s linear;
+            }
+            img {
+                width: 100%;
+                transition: .2s linear;
+            }
+            &_lg {
+                height: 354px;
+                object-fit: cover;
+                @include breakpoint (md) {
+                    height: 230px;
+                }
+            }
+            &_sm {
+                height: 283px;
+                object-fit: cover;
+                @include breakpoint (md) {
+                    height: 230px;
+                }
+            }
+            figcaption {
+                color: $wh;
+                font-size: 50px;
+                line-height: 60px;
+                position: absolute;
+                bottom: 27px;
+                left: 29px;
+                z-index: 3;
+            }
+        }
+        &-lg {
+            grid-column: span 3;
+            @include breakpoint (lg) {
+                grid-column: span 6;
+            }
+        }
+        &-sm {
+            grid-column: span 2;
+            @include breakpoint (lg) {
+                grid-column: span 6;
+            }
+        }
+        a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+        }    
+    }
+}
+//tours
+.tours {
+    margin-bottom: 139px;
+    @include breakpoint (md) {
+        margin-bottom: 76px;
+    }
+    &__tour{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 108px;
+        align-items: center;
+        margin-bottom: 77px;
+        @include breakpoint (lg) {
+            column-gap: 35px;
+        }
+        @include breakpoint (md) {
+            margin-bottom: 50px;
+        }
+        &-pic {
+            @include breakpoint (md) {
+                grid-column: span 2;
+                margin-bottom: 12px;
+            }
+        }
+        &-info {
+            padding-left: 47px;
+            @include breakpoint (lg) {
+               padding-left: 0;
+            }
+            @include breakpoint (md) {
+               grid-column: span 2;
+            }
+            h3 {
+                font-size: 30px;
+                line-height: 40px;
+                margin-bottom: 85px;
+                @include breakpoint (lg) {
+                    margin-bottom: 20px;
+                }
+            }
+            p {
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 58px;
+                @include breakpoint (lg) {
+                    margin-bottom: 10px;
+                }
+            }
+            a {
+                display: inline-block;
+                padding-right: 59px;
+                background: url("../img/svg/arrow.svg") no-repeat 96% center;
+                color: $btn;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 16px;
+                line-height: 24px;
+                transition: .2s linear;
+                &:hover, &:focus {
+                    background: url("../img/svg/arrow.svg") no-repeat right center;
+                }
+            }
+        } 
+        &-mobPic {
+            @include breakpoint (md) {
+                grid-row-start: -1;
+            }
+        } 
+    }
+}
+//top
+.top {
+    padding-bottom: 86px;
+    @include breakpoint (md) {
+        padding-bottom: 76px;
+    }
+    &__title {
+        margin-bottom: 56px;
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: 57px;
+        row-gap: 57px;
+        @include breakpoint (lg) {
+            column-gap: 25px;
+            row-gap: 25px;
+        }
+        &-card {
+            display: flex;
+            flex-direction: column;
+            grid-column: span 2;
+            @include breakpoint (xl) {
+                grid-column: span 3;
+            }
+            @include breakpoint (md) {
+                grid-column: span 6;
+            }
+            &_img {
+                position: relative;
+                margin-bottom: 45px;
+                @include breakpoint (lg) {
+                    margin-bottom: 25px;
+                }
+            }
+            &-stats {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 15px 25px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: $card;
+                @include breakpoint (xl) {
+                    max-width: 386px;
+                }
+                h3 {
+                    color: $wh;
+                    font-size: 18px;
+                    line-height: 24px;
+                    text-transform: uppercase;
+                    margin: 0 auto 0 0;
+                }
+                &__like {
+                    color: $wh;
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-right: 14px;
+                    padding-right: 20px;
+                    background: url("../img/svg/like.svg") no-repeat right;
+                }
+                &__comments {
+                    color: $wh;
+                    font-size: 16px;
+                    line-height: 24px;
+                    padding-right: 23px;
+                    background: url("../img/svg/comments.svg") no-repeat right;
+                }
+            }
+            &_desc {
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 31px;
+                @include breakpoint (md) {
+                    margin-bottom: 15px;
+                }
+            }
+            &_btn {
+                margin: auto 0 0 0 ;
+                width: 118px;
+                padding: 12px 19px;
+                border: 0;
+                outline: 0;
+                background-color: $btn;
+                color: $wh;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 16px;
+                line-height: 19px;
+                transition: .2s linear;
+                white-space: nowrap;
+                &:focus, &:hover, &:active {
+                    background-color: $btna;
+                }
+            }
+        }   
+    }
+}
+//videos
+.videos {
+    width: 100%;
+    &__wrapper {
+        max-width: 1440px;
+        margin: 0 auto;
+        position: relative;
+    }
+    &__item {
+        padding-top: 56.25%;
+    }
+    &__element {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+//footer
+.footer {
+    background-color: $bgH-F;
+    padding: 119px 0;
+    @include breakpoint (lg) {
+        padding: 60px 0;
+    }
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        &-logo {
+            flex: 0 0 50%;
+            @include breakpoint (md) {
+                flex: 0 0 100%;
+                margin-bottom: 12px;
+            }
+        }
+        &-nav {
+            flex: 0 0 50%;
+            display: flex;
+            justify-content: space-between;
+            @include breakpoint (md) {
+                flex: 0 0 100%;
+            }
+            ul {
+                margin-right: 15px;
+                &:last-child {
+                    margin-right: 0;
+                }
+                li {
+                    white-space: nowrap;
+                    &:first-child {
+                        margin-bottom: 4px;
+                    }
+                    margin-bottom: 3px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    h3 {
+                        color: $wh;
+                        font-size: 18px;
+                        line-height: 24px;
+                        font-weight: 700;
+                        white-space: nowrap;
+                        @include breakpoint (md) {
+                            font-size: 16px;
+                            line-height: 20px;
+                        }
+                    }
+                    a {
+                        color: $wh;
+                        font-size: 16px;
+                        line-height: 24px;
+                        text-decoration: none;
+                        @include breakpoint (md) {
+                        font-size: 14px;
+                        line-height: 18px;
+                        }
+                        &:hover, &:focus, &:active {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
